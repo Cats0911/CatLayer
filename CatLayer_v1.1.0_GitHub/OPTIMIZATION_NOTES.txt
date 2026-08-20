@@ -1,0 +1,34 @@
+CatLayer v1.1.0 - conservative optimization pass
+
+Goals
+- Preserve existing behavior and file formats.
+- Reduce repeated CPU/GDI/disk work in high-frequency paths.
+- Avoid risky rewrites of GIF, WebView2, OBS/DWM, preset/group formats.
+
+Changes
+1. Timer layered rendering
+   - Timer clock checks remain at 100 ms for responsive alarms.
+   - Layered-window redraw now occurs only when the displayed second changes.
+
+2. Config persistence
+   - SaveConfig still builds current state and keeps UI refresh behavior.
+   - Identical consecutive states no longer rewrite config.txt/.bak on disk.
+   - List allocation is pre-sized for current item/hotkey counts.
+
+3. Selection handling
+   - Selected overlay deduplication uses HashSet instead of repeated List.Contains.
+   - Group member collection skips disposed forms and pre-sizes its list.
+
+4. UI polling / repaint reductions
+   - Foreground ownership polling changed from ~8.3 Hz to 5 Hz.
+   - OBS Bridge label is changed only when its text actually changes.
+   - Numeric editor values are assigned only when different.
+   - Overlay list columns are resized/invalidated only when widths changed.
+
+Not intentionally changed
+- GIF animation algorithm/timing
+- WebView2 initialization/rendering/security behavior
+- OBS Program/DWM thumbnail behavior
+- Config/preset/group file format
+- Update protocol
+- Version number (remains 1.1.0)
