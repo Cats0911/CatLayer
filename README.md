@@ -1,62 +1,91 @@
 # CatLayer
 
-CatLayer는 Windows 화면 위에 이미지, GIF, 텍스트, 타이머, OBS Program 화면, 웹페이지/로컬 HTML 등을 표시할 수 있는 범용 오버레이 도구입니다.
+CatLayer는 Windows 화면 위에 이미지, 텍스트, 타이머, 웹 페이지, OBS 화면 등을 오버레이로 띄울 수 있는 프로그램입니다.
 
-현재 저장소에는 **CatLayer 1.1.0 개발 소스**가 올라갑니다.  
-정식 사용자용 배포 파일은 GitHub의 **Releases**에서 제공할 예정입니다.
+복잡한 편집 프로그램을 계속 열어두지 않고도 참고 이미지, 방송용 요소, 게임 보조 이미지, 타이머 등을 화면 위에 간단하게 배치하는 것을 목표로 만들었습니다.
 
 ## 주요 기능
 
-- 이미지 / GIF 오버레이
+- 이미지 오버레이
 - 텍스트 오버레이
 - 타이머 / 스톱워치
-- OBS Program 화면 오버레이
-- 웹사이트 / 로컬 HTML / CatLayerWeb 오버레이
-- 투명도, 회전, 반전, 크기 조절
-- 클릭 통과 및 편집 모드
-- 그룹 / 프리셋
-- 화면 영역 캡처
-- 다중 오버레이 정렬 및 스냅
+- GIF 표시 및 제어
+- 웹 오버레이
+- OBS 화면 연동
+- 투명도 조절
+- 자유 이동 / 크기 조절 / 회전
+- 좌우 / 상하 반전
+- 그룹
+- 부모 / 자식 Hierarchy
+- 프리셋 저장 및 불러오기
+- 오버레이 숨김 / 전체 숨김
+- Undo
+- 이미지 Ctrl+C / Ctrl+V
+- 파일 및 이미지 드래그 앤 드롭
+- 오버레이별 항상 위(TopMost) ON/OFF
+- 사용자 지정 단축키
+- 화면 상태 복구
 
-## 실행 및 설치
+## 설치 방법
 
-CatLayer는 Visual Studio 프로젝트 없이 Windows의 .NET Framework 컴파일러를 사용하는 구조입니다.
+1. Release에서 CatLayer ZIP 파일을 받습니다.
+2. ZIP 파일을 압축 해제합니다.
+3. 폴더 안의 `INSTALL.bat`을 실행합니다.
+4. 설치가 완료되면 CatLayer를 실행합니다.
 
-일반 사용자는 정식 배포 ZIP을 받은 뒤 `INSTALL.bat`을 실행하는 방식을 권장합니다.
+CatLayer는 별도의 Visual Studio 설치 없이 사용할 수 있도록 배포됩니다.
 
-개발 소스 실행 및 빌드 관련 파일:
+## 기본 사용
 
-- `src/CatLayer.cs`
-- `src/Uninstall.cs`
-- `RUN.bat`
-- `INSTALL.bat`
-- `tools/Prepare-WebView2.ps1`
+CatLayer 메인화면의 파일 추가 영역을 클릭하거나 이미지 파일을 드래그하면 오버레이를 추가할 수 있습니다.
 
-웹 오버레이에는 Microsoft Edge WebView2 Runtime이 필요합니다.
+오버레이를 선택하면 이동, 크기 조절 등의 편집이 가능하며 우클릭 메뉴에서 복제, 숨김, 반전, 우선순위, 항상 위 설정 등 다양한 기능을 사용할 수 있습니다.
 
-## OBS
+## 기본 단축키
 
-OBS 화면 오버레이는 OBS의 Program Windowed Projector와 DWM Thumbnail 방식을 사용합니다.
+| 기능 | 1번 단축키 | 2번 단축키 |
+| --- | --- | --- |
+| 편집 / 고정 전환 | `Alt + Q` | `F8` |
+| 빠른 숨김 | `Alt + W` | `F9` |
+| 빠른 표시 | `Alt + Shift + W` | `Shift + F9` |
+| 영역 캡처 | `Alt + E` | `F7` |
+| 전체 표시 / 숨김 | `F11` | - |
+| 웹 조작 모드 | `F10` | - |
 
-OBS에서 다음 스크립트를 추가해 사용할 수 있습니다.
+모든 단축키는 설정에서 변경할 수 있습니다.
 
-`obs/CatLayer_OBS_Bridge.lua`
+## 항상 위(TopMost)
 
-## 예제
+기본적으로 CatLayer 오버레이는 다른 프로그램보다 위에 표시됩니다.
 
-`examples` 폴더에는 로컬 HTML 및 CatLayerWeb 테스트용 예제가 포함되어 있습니다.
+특정 오버레이를 일반 창처럼 다른 프로그램 뒤로 보내고 싶다면 해당 오버레이를 우클릭한 뒤 `항상 위 (TopMost)` 체크를 해제하면 됩니다.
 
-## 소스 공개에 대하여
+## 업데이트
 
-이 저장소는 CatLayer의 동작 확인, 투명성, 코드 검토 및 개인적인 학습을 위해 소스를 공개합니다.
+새 버전은 GitHub Release를 통해 배포합니다.
 
-**오픈 소스 라이선스를 부여하는 저장소가 아닙니다.**  
-원본 또는 수정본 CatLayer의 무단 재배포는 허용되지 않습니다.
+업데이트 전 실행 중인 CatLayer를 종료한 뒤 새 버전을 설치하는 것을 권장합니다.
 
-자세한 조건은 [TERMS.md](TERMS.md)를 확인해 주세요.
+## 공식 Discord
 
-## 공식 배포
+CatLayer 사용법 질문, 버그 제보, 기능 제안, 업데이트 안내는 공식 Discord에서 확인할 수 있습니다.
 
-공식 배포본은 이 GitHub 저장소의 Releases를 통해 제공하는 것을 기준으로 합니다.
+**CatLayer 공식 Discord**
 
-비공식적으로 재업로드된 실행 파일이나 수정본은 CatLayer 공식 배포본으로 간주하지 않습니다.
+https://discord.gg/qGbnFquyxJ
+
+GitHub Issue를 사용하지 않는 사용자도 Discord에서 편하게 버그나 피드백을 남길 수 있습니다.
+
+## 이용 및 배포
+
+CatLayer의 기본 기능은 무료로 제공됩니다.
+
+방송 및 개인 사용이 가능합니다.
+
+프로그램 파일 자체의 무단 수정 및 2차 배포보다는 공식 배포 링크를 이용해 주세요.
+
+## 개발
+
+CatLayer는 C# / .NET Framework / WinForms를 기반으로 개발되고 있으며 WebView2와 Windows API를 함께 사용합니다.
+
+프로그램의 기능 개선과 테스트 과정에서 ChatGPT를 개발 보조 도구로 활용하고 있습니다.

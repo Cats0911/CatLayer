@@ -1,0 +1,26 @@
+CatLayer GitHub Release / 자동 업데이트 배포 방법
+
+1. VERSION.txt에 배포할 버전을 적습니다.
+   예: 1.2.1
+
+2. Windows에서 CatLayer_Data\tools\BUILD_RELEASE.bat을 실행합니다.
+   빌드가 끝나면 release 폴더에 아래 두 파일이 생성됩니다.
+   - CatLayer_v1.2.2.zip
+   - SHA256.txt
+
+3. GitHub 저장소 Cats0911/CatLayer에서 새 Release를 만듭니다.
+   Tag: v1.2.2
+   Release는 Draft / Pre-release가 아닌 정식 Published 상태로 공개합니다.
+
+4. Release Assets에 CatLayer_Data\tools\BUILD_RELEASE.bat이 만든 아래 두 파일을 반드시 같이 올립니다.
+   - CatLayer_v1.2.2.zip
+   - SHA256.txt
+
+5. 일반 설치용 CatLayer_v1.2.2.zip도 사용자 다운로드용으로 같이 올려도 됩니다.
+   자동 업데이트는 CatLayer_v버전.zip 파일을 사용합니다.
+
+주의
+- 현재 실행 중인 버전보다 GitHub Release 버전이 높아야 업데이트가 표시됩니다.
+- 예: 현재 1.2.1이면 v1.2.2 이상에서 업데이트가 표시됩니다.
+- Draft / Pre-release는 자동 업데이트 대상이 아닙니다.
+- CatLayer_Data\tools\BUILD_RELEASE.bat은 Windows의 .NET Framework csc.exe와 WebView2 SDK 준비 과정을 사용합니다.

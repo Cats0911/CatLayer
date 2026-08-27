@@ -1,0 +1,13 @@
+:root {
+  --cat-bg: #0d1d37;
+  --cat-panel: #142745;
+  --cat-border: #2a3b58;
+  --cat-accent: #9153ff;
+  --cat-text: #ecf0f8;
+  --cat-muted: #97a2b8;
+  --cat-radius: 8px;
+  --cat-gap: 10px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: transparent; color: var(--cat-text); font-family: "Segoe UI", sans-serif; }
+button, input, textarea, select { font: inherit; }
